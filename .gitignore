@@ -348,3 +348,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# see delta-team slack for details.
+*.properties
+
+# Node Modules
+*node_modules/*
