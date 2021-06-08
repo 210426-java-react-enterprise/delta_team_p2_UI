@@ -63,7 +63,7 @@ function AuthScreen(props) {
                 <br /> <br />
                 <input type="text" placeholder="last name" ref={lastName} />
                 <br /> <br />
-                <input type="tex" placeholder="user bio" ref={userBio} />
+                <input type="text" placeholder="user bio" ref={userBio} />
                 <br /> <br />
                 <button type="submit" className="myButton">Register</button>
             </form>
