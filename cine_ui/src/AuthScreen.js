@@ -43,7 +43,7 @@ function AuthScreen(props) {
 
         <div className = "AuthScreen" >
         <aside className = "AuthScreen-header" >
-            <h2 > Login < /h2>
+            <h2> Login </h2>
             <form onSubmit={login}>
                 <input type="text" placeholder="username" ref={usernameLogin} />
                 <br /> <br />
