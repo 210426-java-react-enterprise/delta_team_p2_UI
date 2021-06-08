@@ -1,71 +1,75 @@
 import './AuthScreen.css';
-import React, {useState}from 'react';
+import React from 'react';
 
-const usernameInputField = document.getElementById('login-form-field-username');
-const passwordInputField = document.getElementById('login-form-field-password');
-const usernameRegisterField = document.getElementById('register-form-field-username');
-const passwordRegisterField = document.getElementById('register-form-field-password');
-const emailRegisterField = document.getElementById('register-form-field-email');
-const firstNameRegisterField = document.getElementById('register-form-field-first-name');
-const lastNameRegisterField = document.getElementById('register-form-field-last-name');
+function AuthScreen(props) {
+
+    const usernameLogin = React.useRef(null);
+    const passwordLogin = React.useRef(null);
+    const usernameReg = React.useRef(null);
+    const passwordReg = React.useRef(null);
+    const email = React.useRef(null);
+    const firstName = React.useRef(null);
+    const lastName = React.useRef(null);
+    const userBio = React.useRef(null);
 
 
-function AuthScreen(props){
+    const login = e => {
+        e.preventDefault();
 
+        const data = {
+            usernameValue: usernameLogin.current.value,
+            passwordValue: passwordLogin.current.value,
+        }
 
-    let login = () =>{
-        let usernameValue = usernameInputField.value;
-        let passwordValue = passwordInputField.value;
-        console.log(`Logging in with credentials: ${usernameInputField.value} ${passwordInputField.value}`); // template literals (interpolation)
-        
-        console.log('My real login is done!');
-
+        console.log(`Logging in with credentials ${data.usernameValue}`)
     };
 
-    let register = () =>{
-        let usernameRegValue = usernameRegisterField.value;
-        let passwordRegValue = passwordRegisterField.value;
-        let emailValue = emailRegisterField.value;
-        let firstNameValue = firstNameRegisterField.value;
-        let lastNameValue = lastNameRegisterField.value;
-        console.log(`Registering: ${usernameRegValue} ${passwordRegValue} ${emailValue} ${firstNameValue} ${lastNameValue}`); // template literals (interpolation)
-        
-        console.log('My real login is done!');
+    const register = e => {
+        e.preventDefault();
 
+        const data = {
+            usernameValue: usernameReg.current.value,
+            passwordValue: passwordReg.current.value,
+            emailValue: email.current.value,
+            firstNameValue: firstName.current.value,
+            lastNameValue: lastName.current.value,
+            userBioValue: userBio.current.value,
+        }
+
+        console.log(`Creating user in with credentials ${data.usernameValue}, ${data.emailValue}, ${data.firstNameValue}, and ${data.lastNameValue}`)
     };
 
-    return(
-        <div className ="AuthScreen">
-            <aside className="AuthScreen-header">
-                <h2>Login</h2>
-                <div>                    
-                    <input id="login-form-field-username" type="text" placeholder="Username"/>
-                    <br/><br/>
-                    <input id="login-form-field-password" type="password" placeholder="Password"/>
-                    <br/><br/>
-                    <button id="login-form-button" onClick = {login}>Login</button>
-                    <br/><br/>
-                </div>
-                <h2>Registration</h2>
-                <div>
-                    <input id="register-form-field-username" type="text" placeholder="Username"/>
-                    <br/><br/>
-                    <input id="register-form-field-password" type="password" placeholder="Password"/>
-                    <br/><br/>
-                    <input id="register-form-field-email" type="text" placeholder="Email"/>
-                    <br/><br/>
-                    <input id="register-form-field-first-name" type="text" placeholder="First name"/>
-                    <br/><br/>
-                    <input id="register-form-field-last-name" type="text" placeholder="Last name"/>
-                    <br/><br/>
-                    <button id="register-form-button" onClick = {register}>Register</button>
-                    <br/><br/>
-                </div>
+    return (
 
-            </aside>
-            
+        <div className = "AuthScreen" >
+        <aside className = "AuthScreen-header" >
+            <h2 > Login < /h2>
+            <form onSubmit={login}>
+                <input type="text" placeholder="username" ref={usernameLogin} />
+                <br /> <br />
+                <input type="password" placeholder="password" ref={passwordLogin} />
+                <br /> <br />
+                <button type="submit" className="myButton">Login</button>
+            </form>
+            <h2> Registration </h2>
+            <form onSubmit={register}>
+                <input type="text" placeholder="username" ref={usernameReg} />
+                <br /> <br />
+                <input type="password" placeholder="password" ref={passwordReg} />
+                <br /> <br />
+                <input type="email" placeholder="email" ref={email} />
+                <br /> <br />
+                <input type="text" placeholder="first name" ref={firstName} />
+                <br /> <br />
+                <input type="text" placeholder="last name" ref={lastName} />
+                <br /> <br />
+                <input type="tex" placeholder="user bio" ref={userBio} />
+                <br /> <br />
+                <button type="submit" className="myButton">Register</button>
+            </form>
+        </aside>
         </div>
-    );
+    )
 }
 
 export default AuthScreen;
