@@ -51,34 +51,36 @@ export function AuthComponent(props: any) {
 
     return (
         <>
-            <Form>
-                <Form.Group controlId="registration-form-username">
-                    <Form.Label className="px-2">Username:</Form.Label>
+            <Form className="px-4">
+                <Form.Group className="col-12 col-sm-6 float-sm-left" controlId="registration-form-username">
+                    <Form.Label>Username:</Form.Label>
                     <Form.Control onChange={updateUsername} type="text" placeholder="username" />
                 </Form.Group>
-                <Form.Group controlId="registration-form-password">
+                <Form.Group className="col-12 col-sm-6 float-sm-left" controlId="registration-form-password">
                     <Form.Label>Password:</Form.Label>
                     <Form.Control onChange={updatePassword} type="password" placeholder="******"/>
                 </Form.Group>
-                <Form.Group controlId="registration-form-email">
+                <Form.Group className="col-12" controlId="registration-form-email">
                     <Form.Label>Email:</Form.Label>
-                    <Form.Control onChange={updateEmail} type="email" placeholder="address@email.net" />
+                    <Form.Control onChange={updateEmail} type="email" placeholder="johnbond@email.net" />
                 </Form.Group>
-                <Form.Group controlId="registration-form-first-name">
+                <Form.Group className="col-12 col-sm-6 float-sm-left" controlId="registration-form-first-name">
                     <Form.Label>First Name:</Form.Label>
                     <Form.Control onChange={updateFirstName} type="text" placeholder="John" />
                 </Form.Group>
-                <Form.Group controlId="registration-form-last-name">
+                <Form.Group className="col-12 col-sm-6 float-sm-left" controlId="registration-form-last-name">
                     <Form.Label>Last Name:</Form.Label>
                     <Form.Control onChange={updateLastName} type="text" placeholder="Bond" />
                 </Form.Group>
-                <Form.Group controlId="registration-form-user-bio">
+                <Form.Group className="col-12" controlId="registration-form-user-bio">
                     <Form.Label>Bio:</Form.Label>
                     <Form.Control onChange={updateUserBio} as="textarea" rows={3} />
                 </Form.Group>
-                <Button variant="danger" type="submit" onClick={registerUser}>
-                    Submit
-                </Button>
+                <Form.Group className="text-center">
+                    <Button className="" variant="danger" type="submit" onClick={registerUser}>
+                        Submit
+                    </Button>
+                </Form.Group>
             </Form>
         </>
     )
