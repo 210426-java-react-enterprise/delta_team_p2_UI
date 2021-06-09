@@ -6,6 +6,8 @@ import { LandingComponent } from './components/LandingComponent';
 
 const logo = require("./logo.svg") as string;//WAT
 
+
+
 function App() {
   return (
     <>

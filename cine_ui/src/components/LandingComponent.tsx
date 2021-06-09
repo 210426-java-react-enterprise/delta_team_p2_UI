@@ -1,5 +1,7 @@
 
-import {Button, Form, FormControl, Navbar, Nav} from "react-bootstrap"
+import React from "react"
+import {Button, Form, FormControl, Navbar, Nav, Table, ListGroup, Card, Container, Row, Col} from "react-bootstrap"
+
 
 interface IUserrops{
 
@@ -7,7 +9,8 @@ interface IUserrops{
 
 export function LandingComponent(props: any){
 
-    let test = true; 
+    const listItems = ["A", "B", "C"]
+
     return(
         <>
 
@@ -23,6 +26,38 @@ export function LandingComponent(props: any){
                     <Button type="submit">Submit</Button>      
                     </Form>
             </Navbar>
+
+
+            <Row>
+                <Col md={{ span: 2, offset: 10 }}>
+                    <Card>
+                    <Card.Header>Friends</Card.Header>
+                    <ListGroup className="seacrh=results" variant="flush">
+                        {listItems.map(listItems => (
+                            <ListGroup.Item>
+                                {listItems}
+                            </ListGroup.Item>
+                        ))}
+                        <ListGroup.Item>----------</ListGroup.Item>
+                    </ListGroup>
+                    </Card> 
+                </Col>
+            </Row>
+
+            
+            <Card className = "float-sm-right" style={{width: '18rem'}}>
+                <Card.Header>Friends</Card.Header>
+                <ListGroup className="seacrh=results" variant="flush">
+                    {listItems.map(listItems => (
+                        <ListGroup.Item>
+                            {listItems}
+                        </ListGroup.Item>
+                    ))}
+                    <ListGroup.Item>----------</ListGroup.Item>
+                </ListGroup>
+                
+            </Card> 
+      
         </>
     )
 }
