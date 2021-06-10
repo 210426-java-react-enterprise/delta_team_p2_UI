@@ -4,11 +4,19 @@ import { AuthComponent } from './components/AuthComponent';
 import { FavoriteMoviesComponent } from './components/FavoriteMoviesComponent';
 import { useState } from "react";
 import './App.css';
+
 import { AllMoviesComponent } from './components/AllMoviesComponent';
+
+import { LandingComponent } from './components/LandingComponent';
+import NavComponent from './components/NavComponent';
+
 
 const logo = require("./logo.svg") as string;//WAT
 
+//const mockUser = false;
+
 function App() {
+  const [loggedIn, setLoggedIn] = useState(undefined as boolean | undefined);
   const [mockmovies, setMovies] = useState([
     {
         id:1,
@@ -79,12 +87,11 @@ function App() {
 
   return (
     <>
-    
-    <FavoriteMoviesComponent movies={mockmovies}/>
-     <Router>
+      <Router>
+        <NavComponent userLogin={loggedIn} setUserLoggedIn={setLoggedIn}></NavComponent>
         <Switch>
-          <Route  path="/auth" render={() => <AuthComponent />} />
-          <Route path = "/favmovies" render={()=><AllMoviesComponent allmovies={mockmovies}/>}/>
+          <Route path="/auth" render={() => <AuthComponent />} />
+          <Route path="/landing" render={() => <LandingComponent />} />
         </Switch>
       </Router>
     </>
