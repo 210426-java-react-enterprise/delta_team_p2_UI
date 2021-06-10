@@ -1,6 +1,6 @@
 
 import React from "react"
-import {Button, Form, FormControl, Navbar, Nav, ListGroup, Card, Container, Row, Col} from "react-bootstrap"
+import {ListGroup, Card, Container, Row, Col, Carousel} from "react-bootstrap"
 
 
 interface IUserrops{
@@ -17,10 +17,38 @@ export function LandingComponent(props: any){
             <Container fluid>
                 <Row>
                     <Col xs = "10">
-                        Carousel Here
+                                <Card>
+                                    <Carousel>
+                                    <Carousel.Item>
+                                        test Item 1-1
+                                    </Carousel.Item>
+                                    <Carousel.Item>
+                                        test Item 1-2
+                                    </Carousel.Item>
+                                    <Carousel.Item>
+                                        test Item 1-3
+                                    </Carousel.Item>
+                                    </Carousel>
+                                </Card>
+                                <br/>
+                                <Card>
+                                    <Carousel>
+                                    <Carousel.Item>
+                                        test Item 2-1
+                                    </Carousel.Item>
+                                    <Carousel.Item>
+                                        test Item 2-2
+                                    </Carousel.Item>
+                                    <Carousel.Item>
+                                        test Item 2-3
+                                    </Carousel.Item>
+                                    </Carousel>
+                                </Card>
+
+
                     </Col>
                     <Col>
-                    <Card style={{height: 'full'}}>
+                    <Card style={{height: '50em'}}>
                         <Card>
                         <Card.Header>Friends</Card.Header>
                             <ListGroup className="seacrh=results" variant="flush">
@@ -37,36 +65,6 @@ export function LandingComponent(props: any){
                     </Col>
                 </Row>
             </Container>
-
-            {/* <Row className="flex-column">
-                <Col md={{ span: 2, offset: 10 }} >
-                    <Card>
-                    <Card.Header>Friends</Card.Header>
-                    <ListGroup className="seacrh=results" variant="flush">
-                        {listItems.map(listItems => (
-                            <ListGroup.Item>
-                                {listItems}
-                            </ListGroup.Item>
-                        ))}
-                        <ListGroup.Item>----------</ListGroup.Item>
-                    </ListGroup>
-                    </Card> 
-                </Col>
-            </Row>
-
-            
-            <Card className = "float-sm-right" style={{width: '18rem'}}>
-                <Card.Header>Friends</Card.Header>
-                <ListGroup className="seacrh=results" variant="flush">
-                    {listItems.map(listItems => (
-                        <ListGroup.Item>
-                            {listItems}
-                        </ListGroup.Item>
-                    ))}
-                    <ListGroup.Item>----------</ListGroup.Item>
-                </ListGroup>
-                
-            </Card>  */}
       
         </>
     )
