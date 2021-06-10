@@ -1,6 +1,6 @@
 
 import React from "react"
-import {Button, Form, FormControl, Navbar, Nav, Table, ListGroup, Card, Container, Row, Col} from "react-bootstrap"
+import {Button, Form, FormControl, Navbar, Nav, ListGroup, Card, Container, Row, Col} from "react-bootstrap"
 
 
 interface IUserrops{
@@ -14,22 +14,32 @@ export function LandingComponent(props: any){
     return(
         <>
 
-            <Navbar bg = "light">
-                <Navbar.Brand>Cineholics Annonymous</Navbar.Brand>
-                    <Nav className="mr-auto">
-                        <Nav.Link>Profile</Nav.Link>
-                        <Nav.Link>Movie List</Nav.Link>
-                        <Nav.Link>Favorites</Nav.Link>
-                    </Nav>
-                    <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
-                    <Button type="submit">Submit</Button>      
-                    </Form>
-            </Navbar>
+            <Container fluid>
+                <Row>
+                    <Col xs = "10">
+                        Carousel Here
+                    </Col>
+                    <Col>
+                    <Card style={{height: 'full'}}>
+                        <Card>
+                        <Card.Header>Friends</Card.Header>
+                            <ListGroup className="seacrh=results" variant="flush">
+                                {listItems.map(listItems => (
+                                    <ListGroup.Item>
+                                        {listItems}
+                                    </ListGroup.Item>
+                                ))}
+                                <ListGroup.Item>----------</ListGroup.Item>
+                            </ListGroup>
+                        </Card> 
+                    </Card>
+                        
+                    </Col>
+                </Row>
+            </Container>
 
-
-            <Row>
-                <Col md={{ span: 2, offset: 10 }}>
+            {/* <Row className="flex-column">
+                <Col md={{ span: 2, offset: 10 }} >
                     <Card>
                     <Card.Header>Friends</Card.Header>
                     <ListGroup className="seacrh=results" variant="flush">
@@ -56,7 +66,7 @@ export function LandingComponent(props: any){
                     <ListGroup.Item>----------</ListGroup.Item>
                 </ListGroup>
                 
-            </Card> 
+            </Card>  */}
       
         </>
     )
