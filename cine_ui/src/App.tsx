@@ -95,10 +95,10 @@ function App() {
       <Router>
         <NavComponent currentUser={mockUser} setUserLogIn={setUser}></NavComponent>
         <Switch>
-          <Route path="/" render={() => <AuthComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
-          <Route path="/favmovies" render={() =><FavoriteMoviesComponent movies={mockmovies}/>}/>
-          <Route path="/searchmovies" render={() =><AllMoviesComponent allmovies={mockmovies}/>}/>
-          <Route path="/landing" render={() => <LandingComponent/>} />
+          <Route exact path="/" render={() => <AuthComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
+          <Route exact path="/favmovies" render={() =><FavoriteMoviesComponent movies={mockmovies}/>}/>
+          <Route exact path="/searchmovies" render={() =><AllMoviesComponent allmovies={mockmovies}/>}/>
+          <Route exact path="/landing" render={() => <LandingComponent/>} />
 
         </Switch>
       </Router>
