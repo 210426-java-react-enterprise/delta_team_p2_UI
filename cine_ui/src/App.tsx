@@ -92,6 +92,8 @@ function App() {
         <Switch>
           <Route path="/auth" render={() => <AuthComponent />} />
           <Route path="/landing" render={() => <LandingComponent />} />
+          <Route path="/favmovies" render={() =><FavoriteMoviesComponent movies={mockmovies}/>}/>
+          <Route path="/searchmovies" render={() =><AllMoviesComponent allmovies={mockmovies}/>}/>
         </Switch>
       </Router>
     </>

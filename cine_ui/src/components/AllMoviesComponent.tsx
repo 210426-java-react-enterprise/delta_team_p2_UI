@@ -9,10 +9,10 @@ export function AllMoviesComponent(props:IAllMoviesProps){
     function alterMessage(){
         alert("selected movieSelected");
     }
-
+    //click or double for more details on movies serperate call to another api(/movieDetails/id)--->just id(IMdb [tt}])
     return(
         //parent class to return
-        <Container>
+        <Container style={{marginTop:"100px"}}>
             <Row >
                 <Col>
                 {props.allmovies.map((movie,i)=>{

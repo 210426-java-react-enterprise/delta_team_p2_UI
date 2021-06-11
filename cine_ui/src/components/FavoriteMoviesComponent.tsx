@@ -13,27 +13,32 @@ export function FavoriteMoviesComponent(props: IMoviesProp) {
     const [index, setIndex] = useState(0);
 
 
-    const rows = props.movies.reduce(function (rows, key, index) { 
-        return (index % 2 == 0 ? rows.push([key]) 
-          : rows[rows.length-1].push(key)) && rows;
-      }, []);
+    const rows = props.movies.reduce(function (rows, key, index) {
+        return (index % 3 == 0 ? rows.push([key])
+            : rows[rows.length - 1].push(key)) && rows;
+    }, []);
 
-      console.log(rows);
+    console.log(rows);
 
     return (
-      <Carousel>
-          {rows.map((twoMovies:any )=> ( 
-            <Carousel.Item >
-                <CardColumns>
-                { twoMovies.map((movie:any) => (
-                    <Card >
-                        <Card.Img src={movie.poster}/>
-                    </Card>)) }
-                </CardColumns>
-            </Carousel.Item>
-          ))}
-          
-      </Carousel>
+        <Container style={{marginTop:"50px"}}>
+            <Row>
+                <Col>
+                    <Carousel>
+                        {rows.map((twoMovies: any) => (
+                            <Carousel.Item >
+                                <CardColumns>
+                                    {twoMovies.map((movie: any) => (
+                                        <Card >
+                                            <Card.Img width={201} height={403} alt="201x403" src={movie.poster} />
+                                        </Card>))}
+                                </CardColumns>
+                            </Carousel.Item>
+                        ))}
+                    </Carousel>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
