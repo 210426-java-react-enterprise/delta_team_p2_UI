@@ -68,6 +68,7 @@ export function AuthComponent(props: IAuthProps) {
         console.log(authName, authPass);
         let authUser = await authenticate(authName, authPass);
         props.setCurrentUser(authUser)
+        
         console.log(`Welcome, ${username}`)
        
     }

@@ -88,7 +88,7 @@ function App() {
 
   const[mockUser, setUser] = useState(undefined as User | undefined);
 
-
+  const[mockFriends, setMockFriends] = useState([])
 
   return (
     <>

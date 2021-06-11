@@ -1,4 +1,5 @@
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 import { User } from "../models/user";
 
 interface INavProps{
@@ -13,6 +14,7 @@ function NavComponent(props: INavProps){
         //props.setUserLoggedIn(undefined);
     }
 
+
     return(
     <>
         <Navbar bg="light">
@@ -22,7 +24,7 @@ function NavComponent(props: INavProps){
                 ?
                 <>
                     <Nav className="mr-auto">
-                        <Nav.Link>Profile</Nav.Link>
+                        <Nav.Link>{props.currentUser.username}'s Profile</Nav.Link>
                         <Nav.Link>Movie List</Nav.Link>
                         <Nav.Link>Favorites</Nav.Link>
                     </Nav>
