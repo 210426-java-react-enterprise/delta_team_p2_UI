@@ -73,7 +73,10 @@ export function AuthComponent(props: IAuthProps) {
     }
 
     return (
-        
+        props.currentUser ?
+        <Redirect to = "/landing"/>
+        :
+        <>
         <div className="col-sm-4 float-sm-right">
             <Form className="row px-4">
                 <h2 className= "col-12">Login</h2>
@@ -124,5 +127,6 @@ export function AuthComponent(props: IAuthProps) {
                 </Form.Group>
             </Form>
         </div>
+        </>
     )
 }
