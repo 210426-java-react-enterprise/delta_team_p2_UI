@@ -95,7 +95,7 @@ function App() {
       <Router>
         <NavComponent currentUser={mockUser} setUserLogIn={setUser}></NavComponent>
         <Switch>
-          <Route path="/auth" render={() => <AuthComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
+          <Route path="/" render={() => <AuthComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
           <Route path="/favmovies" render={() =><FavoriteMoviesComponent movies={mockmovies}/>}/>
           <Route path="/searchmovies" render={() =><AllMoviesComponent allmovies={mockmovies}/>}/>
           <Route path="/landing" render={() => <LandingComponent/>} />
