@@ -5,7 +5,9 @@ import {ListGroup, Card, Container, Row, Col, Carousel, CardGroup} from "react-b
 
 //TODO: Setup interface to take a created User property
 interface IUserrops{
-
+    userid: number,
+    username: String,
+    friends: String[]
 }
 
 export function LandingComponent(props: any){

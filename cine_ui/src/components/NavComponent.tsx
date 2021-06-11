@@ -1,18 +1,16 @@
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { User } from "../models/user";
 
 interface INavProps{
-    userLogin: boolean | undefined
-    setUserLoggedIn: (currentLoginStatus: boolean | undefined) => void
+    currentUser: User | undefined
+    setUserLogIn: (currentLoginStatus: User | undefined) => void
 }
 
 function NavComponent(props: INavProps){
 
-    function logIn(){
-        props.setUserLoggedIn(true);
-    }
 
     function logOut(){
-        props.setUserLoggedIn(true);
+        //props.setUserLoggedIn(undefined);
     }
 
     return(
@@ -20,7 +18,7 @@ function NavComponent(props: INavProps){
         <Navbar bg="light">
             <Navbar.Brand>Cineholics Annonymous</Navbar.Brand>
             {
-                props.userLogin
+                props.currentUser
                 ?
                 <>
                     <Nav className="mr-auto">
@@ -36,7 +34,6 @@ function NavComponent(props: INavProps){
                     :
                     <>
                     <Nav className="mr-auto">
-                        <Nav.Link onClick={logIn}>login Test</Nav.Link>
 
                     </Nav>
  
