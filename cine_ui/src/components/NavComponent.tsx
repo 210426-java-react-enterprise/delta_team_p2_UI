@@ -18,7 +18,7 @@ function NavComponent(props: INavProps){
     return(
     <>
         <Navbar bg="light">
-            <Navbar.Brand>Cineholics Annonymous</Navbar.Brand>
+            <Navbar.Brand>Cineholics Anonymous</Navbar.Brand>
             {
                 props.currentUser
                 ?
