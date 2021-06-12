@@ -9,6 +9,8 @@ import { AllMoviesComponent } from './components/AllMoviesComponent';
 
 import { LandingComponent } from './components/LandingComponent';
 import NavComponent from './components/NavComponent';
+import { SingleMovieComponenet } from './components/SingleMovieComponent';
+import { Movie } from './models/movie';
 
 
 const logo = require("./logo.svg") as string;//WAT
@@ -94,6 +96,7 @@ function App() {
           <Route path="/landing" render={() => <LandingComponent />} />
           <Route path="/favmovies" render={() =><FavoriteMoviesComponent movies={mockmovies}/>}/>
           <Route path="/searchmovies" render={() =><AllMoviesComponent allmovies={mockmovies}/>}/>
+          <Route path="/detailmovie" render={()=><SingleMovieComponenet detailMovie={null as unknown as Movie}/>}/>
         </Switch>
       </Router>
     </>
