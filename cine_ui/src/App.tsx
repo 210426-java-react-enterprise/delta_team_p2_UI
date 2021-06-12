@@ -9,8 +9,8 @@ import { AllMoviesComponent } from './components/AllMoviesComponent';
 
 import { LandingComponent } from './components/LandingComponent';
 import NavComponent from './components/NavComponent';
-import { SingleMovieComponenet } from './components/SingleMovieComponent';
 import { Movie } from './models/movie';
+import { User } from './models/user';
 
 
 const logo = require("./logo.svg") as string;//WAT
@@ -87,16 +87,21 @@ function App() {
 ]
 )
 
+  const[mockUser, setUser] = useState(undefined as User | undefined);
+
+  const[mockFriends, setMockFriends] = useState([])
+
   return (
     <>
       <Router>
-        <NavComponent userLogin={loggedIn} setUserLoggedIn={setLoggedIn}></NavComponent>
+        <NavComponent currentUser={mockUser} setUserLogIn={setUser}></NavComponent>
         <Switch>
-          <Route path="/auth" render={() => <AuthComponent />} />
-          <Route path="/landing" render={() => <LandingComponent />} />
-          <Route path="/favmovies" render={() =><FavoriteMoviesComponent movies={mockmovies}/>}/>
-          <Route path="/searchmovies" render={() =><AllMoviesComponent allmovies={mockmovies}/>}/>
-          <Route path="/detailmovie" render={()=><SingleMovieComponenet detailMovie={null as unknown as Movie}/>}/>
+
+          <Route exact path="/" render={() => <AuthComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
+          <Route exact path="/favmovies" render={() =><FavoriteMoviesComponent movies={mockmovies}/>}/>
+          <Route exact path="/searchmovies" render={() =><AllMoviesComponent allmovies={mockmovies}/>}/>
+          <Route exact path="/landing" render={() => <LandingComponent/>} />
+
         </Switch>
       </Router>
     </>

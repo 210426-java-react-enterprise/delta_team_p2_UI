@@ -5,10 +5,15 @@ import { register } from "../remote/register-service"
 import { Redirect } from "react-router-dom";
 import React from 'react';
 import { authenticate } from "../remote/login-service";
+import NavComponent from "./NavComponent";
+import { User } from "../models/user";
 
+interface IAuthProps{
+    currentUser: User | undefined,
+    setCurrentUser: (setUserLogIn: User | undefined) => void
+}
 
-
-export function AuthComponent(props: any) {
+export function AuthComponent(props: IAuthProps) {
 
     const [authName, setAuthName] = useState('');
     const [authPass, setAuthPass] = useState('');
@@ -61,12 +66,18 @@ export function AuthComponent(props: any) {
     let loginUser = async (e: any) => {
         e.preventDefault();
         console.log(authName, authPass);
-        await authenticate(authName, authPass);
+        let authUser = await authenticate(authName, authPass);
+        props.setCurrentUser(authUser)
+        
         console.log(`Welcome, ${username}`)
+       
     }
 
     return (
-        
+        props.currentUser ?
+        <Redirect to = "/landing"/>
+        :
+        <>
         <div className="col-sm-4 float-sm-right">
             <Form className="row px-4">
                 <h2 className= "col-12">Login</h2>
@@ -117,5 +128,6 @@ export function AuthComponent(props: any) {
                 </Form.Group>
             </Form>
         </div>
+        </>
     )
 }

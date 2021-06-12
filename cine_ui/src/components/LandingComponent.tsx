@@ -2,10 +2,13 @@
 import React from "react"
 
 import {ListGroup, Card, Container, Row, Col, Carousel, CardGroup} from "react-bootstrap"
+import { User } from "../models/user";
 
 //TODO: Setup interface to take a created User property
 interface IUserrops{
-
+    curretUser: User | undefined,
+    setCurrentUser: (setUserLogIn: User | undefined) => void,
+    friends: String[]
 }
 
 export function LandingComponent(props: any){
