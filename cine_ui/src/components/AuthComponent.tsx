@@ -11,7 +11,7 @@ import { getFollowing } from "../remote/landing-service";
 interface IAuthProps{
     currentUser: User | undefined,
     setCurrentUser: (setUserLogIn: User | undefined) => void
-    setFollowing: (setUserFollowing: [follower | undefined]) => void
+    //setFollowing: (setUserFollowing: [follower | undefined]) => void
 }
 
 export function AuthComponent(props: IAuthProps) {

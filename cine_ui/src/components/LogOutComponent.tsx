@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { User } from "../models/user";
 interface IPropLogOut{
     currentUser: User | undefined,
@@ -13,6 +13,7 @@ export function LogOutComponent(props:IPropLogOut){
     useHistory().push("/")//proper way to logout 
     return(
         <>
+            <Redirect to = "/"/>
         </>
     )
 }
