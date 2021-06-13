@@ -1,11 +1,9 @@
 import "./AuthComponent.css";
-import { Form, Button, FormGroup } from "react-bootstrap";
+import { Form, Button} from "react-bootstrap";
 import { useState } from "react";
 import { register } from "../remote/register-service"
 import { Redirect } from "react-router-dom";
-import React from 'react';
 import { authenticate } from "../remote/login-service";
-import NavComponent from "./NavComponent";
 import { User } from "../models/user";
 import { follower } from "../models/follower";
 import { getFollowing } from "../remote/landing-service";
@@ -13,7 +11,7 @@ import { getFollowing } from "../remote/landing-service";
 interface IAuthProps{
     currentUser: User | undefined,
     setCurrentUser: (setUserLogIn: User | undefined) => void
-    setFollowing: (setUserFollowing: [follower | undefined]) => void
+    //setFollowing: (setUserFollowing: [follower | undefined]) => void
 }
 
 export function AuthComponent(props: IAuthProps) {
@@ -70,10 +68,16 @@ export function AuthComponent(props: IAuthProps) {
         e.preventDefault();
         console.log(authName, authPass);
         let authUser = await authenticate(authName, authPass);
+      
+        //add logged in user to local storage
+        localStorage.setItem("loggedInUser",JSON.stringify(authUser));
+        localStorage.setItem("un",authUser.username)
         props.setCurrentUser(authUser)
         console.log(`Welcome, ${username}`)
        
     }
+    
+    
 
     return (
         props.currentUser ?
