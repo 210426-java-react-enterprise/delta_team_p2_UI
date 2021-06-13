@@ -5,20 +5,30 @@ import { FavoriteMoviesComponent } from './components/FavoriteMoviesComponent';
 import { useState } from "react";
 import './App.css';
 
-import { AllMoviesComponent } from './components/AllMoviesComponent';
+//themes
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './themes/themes';
+import { GlobalStyles } from './themes/global';
 
+//hooks
+import useToggle from './hooks/UseToggle';
+
+import { AllMoviesComponent } from './components/AllMoviesComponent';
+import { LogOutComponent } from './components/LogOutComponent';
 import { LandingComponent } from './components/LandingComponent';
 import NavComponent from './components/NavComponent';
+import { Movie } from './models/movie';
 import { User } from './models/user';
 
 
-const logo = require("./logo.svg") as string;//WAT
+const logo = require("./logo.svg") as string;
 
 //const mockUser = false;
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(undefined as boolean | undefined);
-  const [mockmovies, setMovies] = useState([
+  const [favMovie, setfavMovies] = useState([
+
     {
         id:1,
         title:'Avengers',
@@ -86,25 +96,32 @@ function App() {
 ]
 )
 
-  const[mockUser, setUser] = useState(undefined as User | undefined);
+  const addFavMovieToList = (favoriteMovie:Movie)=>{
+    setfavMovies([...favMovie,favoriteMovie])
+  }
 
+  const[mockUser, setUser] = useState(undefined as User | undefined);
   const[mockFriends, setMockFriends] = useState([])
+  const [darkMode, setDarkMode] = useState(false as boolean);
+
 
   return (
-    <>
-      <Router>
-        <NavComponent currentUser={mockUser} setUserLogIn={setUser}></NavComponent>
-        <Switch>
-          <Route exact path="/" render={() => <AuthComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
-          <Route exact path="/favmovies" render={() =><FavoriteMoviesComponent movies={mockmovies}/>}/>
-          <Route exact path="/searchmovies" render={() =><AllMoviesComponent allmovies={mockmovies}/>}/>
-          <Route exact path="/landing" render={() => <LandingComponent/>} />
 
-        </Switch>
-      </Router>
-    </>
-
-
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+      <>
+        <GlobalStyles />
+        <Router>
+          <NavComponent currentUser={mockUser} setUserLogIn={setUser} darkMode={darkMode} setDarkMode={setDarkMode} ></NavComponent>
+          <Switch>
+            <Route exact path="/" render={() => <AuthComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
+            <Route exact path="/favmovies" render={() =><FavoriteMoviesComponent movies={favMovie}/>}/>
+            <Route exact path="/searchmovies" render={() =><AllMoviesComponent currentUser={mockUser} allmovies={favMovie} onAdd={addFavMovieToList}/>}/>
+            <Route exact path="/landing" render={() => <LandingComponent/>} />
+            <Route exact path="/out" render={() => <LogOutComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
+          </Switch>
+        </Router>
+      </>
+    </ThemeProvider>
   );
 }
 
