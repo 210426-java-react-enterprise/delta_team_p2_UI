@@ -1,14 +1,16 @@
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import { User } from "../models/user";
+import DarkModeComponent from "./DarkModeToggleComponent";
 
 interface INavProps{
-    currentUser: User | undefined
-    setUserLogIn: (currentLoginStatus: User | undefined) => void
+    currentUser: User | undefined,
+    setUserLogIn: (currentLoginStatus: User | undefined) => void,
+    darkMode: boolean,
+    setDarkMode: (darkMode: boolean) => void
 }
 
 function NavComponent(props: INavProps){
-
 
     function logOut(){
         //props.setUserLoggedIn(undefined);
@@ -32,6 +34,7 @@ function NavComponent(props: INavProps){
                         <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
                         <Button type="submit">Submit</Button>  
                     </Form>
+                    <DarkModeComponent darkMode={props.darkMode} setDarkMode={props.setDarkMode}/>
                     </>
                     :
                     <>
