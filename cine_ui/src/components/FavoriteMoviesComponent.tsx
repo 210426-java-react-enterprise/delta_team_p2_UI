@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Card, CardColumns, Carousel, Col, Container, Image, Row } from "react-bootstrap";
-import { useLocalStorage } from "../actions/UseLocalStorage";
+import { useLocalStorage } from "../action/UseLocalStorage";
 import { Movie } from "../models/movie";
 
 
@@ -20,13 +20,6 @@ export function FavoriteMoviesComponent(props: IMoviesProp) {
     const [listMovies, setlistMovies] = useState([...props.movies])
     const [localmoviestorage, setlocalmoviestorage]=useLocalStorage("movies",[...props.movies]);
 
-    const tempfunc = () => {
-        if (localStorage.getItem("movies")) {
-            let newList = JSON.parse(localStorage.getItem('movies') || '{}');
-            console.log("new list of favorites", newList)
-        }
-    };
-
 
     const rows =localmoviestorage.reduce(function (rows:any, key:any, index:any) {
         return (index % 3 == 0 ? rows.push([key])
@@ -35,7 +28,7 @@ export function FavoriteMoviesComponent(props: IMoviesProp) {
 
     //be able to see what row displays.
     // console.log(rows);
-    console.log(localmoviestorage)
+    
     return (
         <>
             {localmoviestorage && <Container style={{ marginTop: "50px" }}>

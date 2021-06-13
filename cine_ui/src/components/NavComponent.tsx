@@ -1,5 +1,6 @@
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
-import { Redirect } from "react-router-dom";
+
+
 import { User } from "../models/user";
 
 interface INavProps{
@@ -9,24 +10,35 @@ interface INavProps{
 
 function NavComponent(props: INavProps){
 
+    //get logged in user from local storage
+    const loggedUser = JSON.parse(localStorage.getItem("loggedInUser")||"{}");
+    const userChecker = localStorage.getItem("loggedInUser");
 
     function logOut(){
         //props.setUserLoggedIn(undefined);
     }
 
-
+    // setTimeout(()=>{
+    //     let 
+        
+    // })
+   
+    console.log(loggedUser);
+    console.log("userchecker",userChecker)
     return(
     <>
         <Navbar bg="light">
             <Navbar.Brand>Cineholics Annonymous</Navbar.Brand>
             {
-                props.currentUser
+                userChecker
+                
                 ?
                 <>
                     <Nav className="mr-auto">
-                        <Nav.Link>{props.currentUser.username}'s Profile</Nav.Link>
+                        <Nav.Link>{String(loggedUser.username)}'s Profile</Nav.Link>
                         <Nav.Link href="/searchmovies">Movie List</Nav.Link>
                         <Nav.Link href="/favmovies">Favorites</Nav.Link>
+                        <Nav.Link href="/out">Log Out</Nav.Link>
                     </Nav>
                     <Form inline>
                         <FormControl type="text" placeholder="Search" className="mr-sm-2"/>

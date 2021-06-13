@@ -6,7 +6,7 @@ import { useState } from "react";
 import './App.css';
 
 import { AllMoviesComponent } from './components/AllMoviesComponent';
-
+import { LogOutComponent } from './components/LogOutComponent';
 import { LandingComponent } from './components/LandingComponent';
 import NavComponent from './components/NavComponent';
 import { Movie } from './models/movie';
@@ -102,10 +102,10 @@ function App() {
         <Switch>
 
           <Route exact path="/" render={() => <AuthComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
-          <Route  path="/favmovies" render={() =><FavoriteMoviesComponent movies={favMovie}/>}/>
-          <Route  path="/searchmovies" render={() =><AllMoviesComponent currentUser={mockUser} allmovies={favMovie} onAdd={addFavMovieToList}/>}/>
-          <Route  path="/landing" render={() => <LandingComponent/>} />
-
+          <Route exact path="/favmovies" render={() =><FavoriteMoviesComponent movies={favMovie}/>}/>
+          <Route exact path="/searchmovies" render={() =><AllMoviesComponent currentUser={mockUser} allmovies={favMovie} onAdd={addFavMovieToList}/>}/>
+          <Route exact path="/landing" render={() => <LandingComponent/>} />
+          <Route exact path="/out" render={() => <LogOutComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
         </Switch>
       </Router>
     </>

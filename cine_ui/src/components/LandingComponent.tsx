@@ -1,6 +1,3 @@
-
-import React from "react"
-
 import {ListGroup, Card, Container, Row, Col, Carousel, CardGroup} from "react-bootstrap"
 import { User } from "../models/user";
 

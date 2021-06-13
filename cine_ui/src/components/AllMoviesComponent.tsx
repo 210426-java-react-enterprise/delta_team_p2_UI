@@ -1,8 +1,5 @@
 import { useState } from "react";
 import { Navbar, Button, Card, Col, Container, ListGroup, Image, Nav, Row } from "react-bootstrap";
-import { ButtonVariant } from "react-bootstrap/esm/types";
-import { useHistory } from "react-router";
-import { BrowserRouter } from "react-router-dom";
 import { Movie } from "../models/movie";
 import { User } from "../models/user";
 import { moreDetails } from "../remote/moreInfo-service";
