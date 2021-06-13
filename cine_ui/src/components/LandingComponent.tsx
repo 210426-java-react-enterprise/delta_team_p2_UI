@@ -1,6 +1,6 @@
 
-import React, { useState } from "react"
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react"
+
 import {ListGroup, Card, Container, Row, Col, Carousel, CardGroup} from "react-bootstrap"
 import { follower } from "../models/follower";
 import { User } from "../models/user";
