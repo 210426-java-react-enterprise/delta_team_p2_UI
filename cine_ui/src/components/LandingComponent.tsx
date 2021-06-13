@@ -16,28 +16,9 @@ interface IUserprops{
 
 export function LandingComponent(props: IUserprops){
 
-    const listItems = ["A", "B", "C"]
-
     const fakeMovieList = ["movie1", "movie2", "movie3", "movie 4", "movie 5", "movie6"]
 
     let followers: follower[] = [];
-    //Sets the follwerList (broken, will continuously fire axios call)
-    // let arr_follower = (async function(){ 
-    //     try{
-    //         followers =  await getFollowing(props.curretUser?.id ?? "1");
-    //         props.setFollowers(followers);
-
-    //         followers.forEach((item,i) => {
-    //             followerslist[i] = item.username
-    //         })
-    //     }catch(e){
-    //         console.log(e);
-    //     }
-
-        
-    //     return followers;
-    // })();
-
   
         useEffect(()=> {
             console.log("Use Effect is Called")
@@ -55,7 +36,6 @@ export function LandingComponent(props: IUserprops){
           : rows[rows.length-1].push(key)) && rows;
       }, []);
 
-    //   console.log(rows)
 
     const[followersListTest, setFollowersList] = useState('');
     let updateFollowerlist = (e:any) => {
