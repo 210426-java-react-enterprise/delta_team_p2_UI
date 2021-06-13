@@ -2,13 +2,17 @@ import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 
 
 import { User } from "../models/user";
+import DarkModeComponent from "./DarkModeToggleComponent";
 
 interface INavProps{
-    currentUser: User | undefined
-    setUserLogIn: (currentLoginStatus: User | undefined) => void
+    currentUser: User | undefined,
+    setUserLogIn: (currentLoginStatus: User | undefined) => void,
+    darkMode: boolean,
+    setDarkMode: (darkMode: boolean) => void
 }
 
 function NavComponent(props: INavProps){
+
 
     //get logged in user from local storage
     const loggedUser = JSON.parse(localStorage.getItem("loggedInUser")||"{}");
@@ -28,7 +32,7 @@ function NavComponent(props: INavProps){
     return(
     <>
         <Navbar bg="light">
-            <Navbar.Brand>Cineholics Annonymous</Navbar.Brand>
+            <Navbar.Brand>Cineholics Anonymous</Navbar.Brand>
             {
                 userChecker
                 
@@ -44,6 +48,7 @@ function NavComponent(props: INavProps){
                         <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
                         <Button type="submit">Submit</Button>  
                     </Form>
+                    <DarkModeComponent darkMode={props.darkMode} setDarkMode={props.setDarkMode}/>
                     </>
                     :
                     <>
