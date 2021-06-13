@@ -23,7 +23,7 @@ export function LandingComponent(props: IUserprops){
         useEffect(()=> {
             console.log("Use Effect is Called")
             const getData = async () => {
-                followers = await getFollowing(props.curretUser?.id ?? "1");
+                followers = await getFollowing(props.curretUser.id);
                 props.setFollowers(followers);
             };
             getData();
@@ -37,10 +37,7 @@ export function LandingComponent(props: IUserprops){
       }, []);
 
 
-    const[followersListTest, setFollowersList] = useState('');
-    let updateFollowerlist = (e:any) => {
-        console.log("LOADED")
-    }
+
     //TODO: Change these values to match the user's values
     return(
 
