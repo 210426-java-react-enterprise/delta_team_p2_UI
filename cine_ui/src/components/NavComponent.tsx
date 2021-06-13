@@ -1,6 +1,6 @@
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
-
-
+import { Redirect } from "react-router-dom";
+import { follower } from "../models/follower";
 import { User } from "../models/user";
 import DarkModeComponent from "./DarkModeToggleComponent";
 
