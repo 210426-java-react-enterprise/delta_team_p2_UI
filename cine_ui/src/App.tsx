@@ -10,6 +10,7 @@ import { AllMoviesComponent } from './components/AllMoviesComponent';
 import { LandingComponent } from './components/LandingComponent';
 import NavComponent from './components/NavComponent';
 import { User } from './models/user';
+import { follower } from './models/follower';
 
 
 const logo = require("./logo.svg") as string;//WAT
@@ -88,17 +89,19 @@ function App() {
 
   const[mockUser, setUser] = useState(undefined as User | undefined);
 
-  const[mockFriends, setMockFriends] = useState([])
+  const[mockFriends, setMockFriends] = useState([undefined as follower | undefined])
+
+  const [Followers, setFollowers] = useState(undefined as follower[] | undefined)
 
   return (
     <>
       <Router>
         <NavComponent currentUser={mockUser} setUserLogIn={setUser}></NavComponent>
         <Switch>
-          <Route path="/auth" render={() => <AuthComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
+          <Route exact path="/" render={() => <AuthComponent currentUser={mockUser} setCurrentUser={setUser}  setFollowing={setMockFriends}/>} />
           <Route path="/favmovies" render={() =><FavoriteMoviesComponent movies={mockmovies}/>}/>
           <Route path="/searchmovies" render={() =><AllMoviesComponent allmovies={mockmovies}/>}/>
-          <Route path="/landing" render={() => <LandingComponent/>} />
+          <Route path="/landing" render={() => <LandingComponent curretUser={mockUser} setCurrentUser={setUser} followers={Followers} setFollowers ={setFollowers}/>}/>
 
         </Switch>
       </Router>

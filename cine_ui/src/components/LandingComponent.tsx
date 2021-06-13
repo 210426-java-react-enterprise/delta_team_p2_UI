@@ -1,30 +1,54 @@
 
-import React from "react"
-
+import React, { useState } from "react"
 import {ListGroup, Card, Container, Row, Col, Carousel, CardGroup} from "react-bootstrap"
+import { follower } from "../models/follower";
 import { User } from "../models/user";
+import { getFollowing } from "../remote/landing-service";
 
 //TODO: Setup interface to take a created User property
-interface IUserrops{
+interface IUserprops{
     curretUser: User | undefined,
     setCurrentUser: (setUserLogIn: User | undefined) => void,
-    friends: String[]
+    followers: follower[] | undefined,
+    setFollowers: (setFollowersList: follower[]) => void
 }
 
-export function LandingComponent(props: any){
+export function LandingComponent(props: IUserprops){
 
     const listItems = ["A", "B", "C"]
 
     const fakeMovieList = ["movie1", "movie2", "movie3", "movie 4", "movie 5", "movie6"]
+
+    let followers: follower[] = [];
+    let followerslist: string[] = [];
+    //Sets the follwerList (broken, will continuously fire axios call)
+    // let arr_follower = (async function(){ 
+    //     try{
+    //         followers =  await getFollowing(props.curretUser?.id ?? "1");
+    //         props.setFollowers(followers);
+
+    //         followers.forEach((item,i) => {
+    //             followerslist[i] = item.username
+    //         })
+    //     }catch(e){
+    //         console.log(e);
+    //     }
+
+        
+    //     return followers;
+    // })();
 
     const rows = fakeMovieList.reduce(function (rows: any, key, index) { 
         return (index % 2 == 0 ? rows.push([key]) 
           : rows[rows.length-1].push(key)) && rows;
       }, []);
 
-      console.log(rows)
+    //   console.log(rows)
 
-
+    const[followersListTest, setFollowersList] = useState('');
+    let updateFollowerlist = (e:any) => {
+        console.log("LOADED")
+    }
     //TODO: Change these values to match the user's values
     return(
 
@@ -67,12 +91,20 @@ export function LandingComponent(props: any){
                     <Card style={{height: "57rem"}}>
                     <Card.Header>Friends</Card.Header>
                         <div className="justify-content-center">
-                                <ListGroup className="seacrh=results" variant="flush">
-                                    {listItems.map(listItems => (
-                                        <ListGroup.Item>
-                                            {listItems}
-                                        </ListGroup.Item>
-                                    ))}
+                                <ListGroup className="seacrh=results" variant="flush" onLoad={() => console.log("LOADED")}>
+                                    {
+                                        props.followers 
+                                        ?
+                                        // props.followers.map(followers => (
+                                        //     <ListGroup.Item>
+                                        //         {followers.username}
+                                        //     </ListGroup.Item>
+                                        // ))   
+                                        <ListGroup.Item> followers here</ListGroup.Item>
+                                        :
+                                        <ListGroup.Item> No Follower Found</ListGroup.Item>
+                                    }
+                                   
                                     <ListGroup.Item>----------</ListGroup.Item>
                                 </ListGroup>
                         </div>

@@ -7,10 +7,13 @@ import React from 'react';
 import { authenticate } from "../remote/login-service";
 import NavComponent from "./NavComponent";
 import { User } from "../models/user";
+import { follower } from "../models/follower";
+import { getFollowing } from "../remote/landing-service";
 
 interface IAuthProps{
     currentUser: User | undefined,
     setCurrentUser: (setUserLogIn: User | undefined) => void
+    setFollowing: (setUserFollowing: [follower | undefined]) => void
 }
 
 export function AuthComponent(props: IAuthProps) {
@@ -68,7 +71,6 @@ export function AuthComponent(props: IAuthProps) {
         console.log(authName, authPass);
         let authUser = await authenticate(authName, authPass);
         props.setCurrentUser(authUser)
-        
         console.log(`Welcome, ${username}`)
        
     }
