@@ -1,5 +1,6 @@
 
 import React, { useState } from "react"
+import { useEffect } from "react";
 import {ListGroup, Card, Container, Row, Col, Carousel, CardGroup} from "react-bootstrap"
 import { follower } from "../models/follower";
 import { User } from "../models/user";
@@ -20,7 +21,6 @@ export function LandingComponent(props: IUserprops){
     const fakeMovieList = ["movie1", "movie2", "movie3", "movie 4", "movie 5", "movie6"]
 
     let followers: follower[] = [];
-    let followerslist: string[] = [];
     //Sets the follwerList (broken, will continuously fire axios call)
     // let arr_follower = (async function(){ 
     //     try{
@@ -37,6 +37,18 @@ export function LandingComponent(props: IUserprops){
         
     //     return followers;
     // })();
+
+  
+        useEffect(()=> {
+            console.log("Use Effect is Called")
+            const getData = async () => {
+                followers = await getFollowing(props.curretUser?.id ?? "1");
+                props.setFollowers(followers);
+            };
+            getData();
+        }, [])
+
+    
 
     const rows = fakeMovieList.reduce(function (rows: any, key, index) { 
         return (index % 2 == 0 ? rows.push([key]) 
@@ -91,16 +103,15 @@ export function LandingComponent(props: IUserprops){
                     <Card style={{height: "57rem"}}>
                     <Card.Header>Friends</Card.Header>
                         <div className="justify-content-center">
-                                <ListGroup className="seacrh=results" variant="flush" onLoad={() => console.log("LOADED")}>
+                                <ListGroup className="seacrh=results" variant="flush">
                                     {
                                         props.followers 
                                         ?
-                                        // props.followers.map(followers => (
-                                        //     <ListGroup.Item>
-                                        //         {followers.username}
-                                        //     </ListGroup.Item>
-                                        // ))   
-                                        <ListGroup.Item> followers here</ListGroup.Item>
+                                        props.followers.map(followers => (
+                                            <ListGroup.Item>
+                                                {followers.username}
+                                            </ListGroup.Item>
+                                        )) 
                                         :
                                         <ListGroup.Item> No Follower Found</ListGroup.Item>
                                     }
