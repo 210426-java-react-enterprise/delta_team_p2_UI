@@ -105,6 +105,8 @@ function App() {
         
   const[mockUser, setUser] = useState(undefined as User | undefined);
   const [followers, setFollowers] = useState(undefined as follower[] | undefined)
+  const [watchList, setWatchList] = useState(undefined as Movie[] | undefined)
+  const [watchHistory, setWatchHistory] = useState(undefined as Movie[] | undefined)
   const [darkMode, setDarkMode] = useState(false as boolean);
 
 
@@ -119,7 +121,8 @@ function App() {
             <Route exact path="/" render={() => <AuthComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
             <Route exact path="/favmovies" render={() =><FavoriteMoviesComponent movies={favMovie}/>}/>
             <Route exact path="/searchmovies" render={() =><AllMoviesComponent currentUser={mockUser} allmovies={favMovie} onAdd={addFavMovieToList}/>}/>
-            <Route path="/landing" render={() => <LandingComponent curretUser={mockUser} setCurrentUser={setUser} followers={followers} setFollowers ={setFollowers}/>}/>
+            <Route path="/landing" render={() => <LandingComponent curretUser={mockUser} setCurrentUser={setUser} followers={followers}
+             setFollowers ={setFollowers} watchList={watchList} setWatchList={setWatchList} watchHistory={watchHistory} setWatchHistory={setWatchHistory}/>}/>
             <Route exact path="/out" render={() => <LogOutComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
           </Switch>
         </Router>
