@@ -25,8 +25,8 @@ function NavComponent(props: INavProps){
                 <>
                     <Nav className="mr-auto">
                         <Nav.Link>{props.currentUser.username}'s Profile</Nav.Link>
-                        <Nav.Link>Movie List</Nav.Link>
-                        <Nav.Link>Favorites</Nav.Link>
+                        <Nav.Link href="/searchmovies">Movie List</Nav.Link>
+                        <Nav.Link href="/favmovies">Favorites</Nav.Link>
                     </Nav>
                     <Form inline>
                         <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
