@@ -5,10 +5,13 @@ import { register } from "../remote/register-service"
 import { Redirect } from "react-router-dom";
 import { authenticate } from "../remote/login-service";
 import { User } from "../models/user";
+import { follower } from "../models/follower";
+import { getFollowing } from "../remote/landing-service";
 
 interface IAuthProps{
     currentUser: User | undefined,
     setCurrentUser: (setUserLogIn: User | undefined) => void
+    setFollowing: (setUserFollowing: [follower | undefined]) => void
 }
 
 export function AuthComponent(props: IAuthProps) {
