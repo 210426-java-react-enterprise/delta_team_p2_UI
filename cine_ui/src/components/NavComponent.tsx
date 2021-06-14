@@ -21,11 +21,6 @@ function NavComponent(props: INavProps){
     function logOut(){
         //props.setUserLoggedIn(undefined);
     }
-
-    // setTimeout(()=>{
-    //     let 
-        
-    // })
    
     console.log(loggedUser);
     console.log("userchecker",userChecker)
@@ -40,7 +35,8 @@ function NavComponent(props: INavProps){
                 <>
                     <Nav className="mr-auto">
                         <Nav.Link>{String(loggedUser.username)}'s Profile</Nav.Link>
-                        <Nav.Link href="/searchmovies">Movie List</Nav.Link>
+                        <Nav.Link href="/watchhistory">My Watch History</Nav.Link>
+                        <Nav.Link href="/watchlist">My Future Watch List</Nav.Link>
                         <Nav.Link href="/favmovies">Favorites</Nav.Link>
                         <Nav.Link href="/out">Log Out</Nav.Link>
                     </Nav>

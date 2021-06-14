@@ -13,7 +13,7 @@ import { GlobalStyles } from './themes/global';
 //hooks
 import useToggle from './hooks/UseToggle';
 
-import { AllMoviesComponent } from './components/WatchHistory';
+import { WatchHistoryComponent } from './components/WatchHistoryComponent';
 import { LogOutComponent } from './components/LogOutComponent';
 import { LandingComponent } from './components/LandingComponent';
 import NavComponent from './components/NavComponent';
@@ -53,7 +53,7 @@ function App() {
           <Switch>
             <Route exact path="/" render={() => <AuthComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
             <Route exact path="/favmovies" render={() =><FavoriteMoviesComponent movies={favMovie}/>}/>
-            <Route exact path="/searchmovies" render={() =><AllMoviesComponent currentUser={mockUser} allmovies={favMovie} onAdd={addFavMovieToList}/>}/>
+            <Route exact path="/watchhistory" render={() =><WatchHistoryComponent currentUser={mockUser} allmovies={favMovie} onAdd={addFavMovieToList}/>}/>
             <Route path="/landing" render={() => <LandingComponent currentUser={mockUser} setCurrentUser={setUser} followers={followers}
              setFollowers ={setFollowers} watchList={watchList} setWatchList={setWatchList} watchHistory={watchHistory} setWatchHistory={setWatchHistory}/>}/>
             <Route exact path="/out" render={() => <LogOutComponent currentUser={mockUser} setCurrentUser={setUser}/>} />

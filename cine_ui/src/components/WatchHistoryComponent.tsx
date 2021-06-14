@@ -4,16 +4,16 @@ import { Navbar, Button, Card, Col, Container, ListGroup, Image, Nav, Row } from
 import { Movie } from "../models/movie";
 import { User } from "../models/user";
 import { moreDetails } from "../remote/moreInfo-service";
-import { getWatchHistory } from "../remote/watchlist-service";
+import { getWatchHistory } from "../remote/landing-service";
 
-interface IAllMoviesProps {
+interface IWatchHistoryProps {
     //this prop refers to what we will use to call in App state level
     currentUser: User | undefined
     allmovies: Movie[];
     onAdd: (fm: Movie) => void;
 }
 
-export function AllMoviesComponent(props: IAllMoviesProps) {
+export function WatchHistoryComponent(props: IWatchHistoryProps) {
 
 
     const [detailMovie, setdetailMovie] = useState(false);
@@ -114,45 +114,3 @@ export function AllMoviesComponent(props: IAllMoviesProps) {
 }
 
 
-
-// toggleDetailedPage = () =>{
-//     this.setdetailMovie()
-// }
-
-//onClick={() => moreInformation(movie.id)}
-
-
-    //trying accordian
-//     <Accordion>
-//     {props.allmovies.map((movie, i) => {
-//         <Card>
-//             <Card.Header>
-//                 <Accordion.Toggle as={Button} variant="link" eventKey={String(i)} >one</Accordion.Toggle>
-//             </Card.Header>
-//             <Accordion.Collapse eventKey={String(i)}>
-//                 <Card.Body>in the body</Card.Body>
-//             </Accordion.Collapse>
-//         </Card>
-//     })}
-// </Accordion>
-
-// <Container style={{ marginTop: "100px" }}>
-//                 <Row >
-//                     {/* //parent class to return */}
-//                     <Col>
-//                         {props.allmovies.map((movie, i) => {
-//                             return (
-//                                 i % 2 === 0
-//                                     ?
-//                                     <ListGroup style={{ margin: "10px" }}>
-//                                         <ListGroup.Item action onClick={() => moreInformation(movie.id)} variant="dark">{i} {movie.title}</ListGroup.Item>
-//                                     </ListGroup>
-//                                     :
-//                                     <ListGroup style={{ margin: "10px" }}>
-//                                         <ListGroup.Item action onClick={() => moreInformation(movie.id)} variant="light">{i} {movie.title}</ListGroup.Item>
-//                                     </ListGroup>
-//                             )
-//                         })}
-//                     </Col>
-//                 </Row>
-//             </Container
