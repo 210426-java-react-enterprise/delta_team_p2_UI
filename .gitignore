@@ -359,9 +359,6 @@ MigrationBackup/
 # testing
 /coverage
 
-# production
-/build
-
 # misc
 .DS_Store
 .env.local
@@ -376,7 +373,11 @@ yarn-error.log*
 # package-lock
 */package-lock.json
 
+# production
+build/
 
 # idea
 .idea/
 
+# format for removing folders:
+#   foldername/
