@@ -7,10 +7,9 @@ import { webappClient, webappClientAuthorized } from "./webapp-client";
 // }
 
 
-
 export async function getFollowing(){
     let response = await webappClientAuthorized.get(`/followerdetail`)
-    //console.log("Data:" + response.data)
+    console.log("Data:" + response.data)
     return await response.data;
 }
 
@@ -21,7 +20,7 @@ export async function getWatchHistory() {
 
 export async function getWatchList(){
     let response = await webappClientAuthorized.get(`/wishlist`)
-    //console.log("Data:" + response.data)
+    console.log("Data:" + response.data)
     return await response.data;
 }
 

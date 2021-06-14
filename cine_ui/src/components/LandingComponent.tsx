@@ -120,15 +120,15 @@ export function LandingComponent(props: IUserprops){
                                         watchListElement
                                         ?
                                         watchListElement.map(movie => (
-                                            <>
                                             <Carousel.Item>
-                                                {movie.title}
-                                            </Carousel.Item> 
-                                            <img src={movie.poster}/>
-                                            </>
+                                                <div>
+                                                    <span className="d-block">{movie.title}</span> 
+                                                    <img src={movie.poster}/>
+                                                </div>
+                                            </Carousel.Item>
                                             ))
                                         :
-                                        <Carousel.Item> Your Watch List Is empty</Carousel.Item>
+                                        <Carousel.Item> Your Watch List is empty</Carousel.Item>
                                     }
                                     {/* {fakeMovieList.map(fakeMovieList => (
                                         <Carousel.Item>
