@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { Navbar, Button, Card, Col, Container, ListGroup, Image, Nav, Row } from "react-bootstrap";
 import { Movie } from "../models/movie";
 import { User } from "../models/user";
 import { moreDetails } from "../remote/moreInfo-service";
+import { getWatchHistory } from "../remote/watchlist-service";
 
 interface IAllMoviesProps {
     //this prop refers to what we will use to call in App state level
@@ -17,14 +19,18 @@ export function AllMoviesComponent(props: IAllMoviesProps) {
     const [detailMovie, setdetailMovie] = useState(false);
     const [listMovie, setlistMovie] = useState(true);
     const [wantedMovie, setWantedMovie] = useState(undefined as unknown as Movie || undefined);
+    const [movieElement, setMovieElement] = useState(undefined as unknown as Movie[] || undefined);
 
-    let moreInformation = async (id: number) => {
-        console.log("searched Movied", id);
-        var desiredMovie = await moreDetails(id);
-        console.log('complete');
-    }
+    useEffect(()=> {
+        const getData = async () => {
+            let response = await getWatchHistory();
+            setMovieElement(response)
+            console.log(movieElement);
+        };
+        getData();
+    }, [])
 
-    let toggleDetailMovie = (movie: Movie) => {
+    let toggleDetailMovie = (movie: any) => {
         setWantedMovie(preMovie => movie);
         setlistMovie(false);
         setdetailMovie(true);
@@ -40,8 +46,6 @@ export function AllMoviesComponent(props: IAllMoviesProps) {
 
     //click or double for more details on movies serperate call to another api(/movieDetails/id)--->just id(IMdb [tt}])
     return (
-
-
         <>
             {/* <Navbar>
                 <Nav>
@@ -52,16 +56,16 @@ export function AllMoviesComponent(props: IAllMoviesProps) {
                 <Row >
                     {/* //parent class to return */}
                     <Col>
-                        {props.allmovies.map((movie, i) => {
+                        {movieElement?.map((element, i) => {
                             return (
                                 i % 2 === 0
                                     ?
                                     <ListGroup style={{ margin: "10px" }}>
-                                        <ListGroup.Item action onClick={() => toggleDetailMovie(movie)} variant="dark">{i} {movie.title}</ListGroup.Item>
+                                        <ListGroup.Item action onClick={() => toggleDetailMovie(element)} variant="dark"> {element.title}</ListGroup.Item>
                                     </ListGroup>
                                     :
                                     <ListGroup style={{ margin: "10px" }}>
-                                        <ListGroup.Item action onClick={() => toggleDetailMovie(movie)} variant="light">{i} {movie.title}</ListGroup.Item>
+                                        <ListGroup.Item action onClick={() => toggleDetailMovie(element)} variant="light"> {element.title}</ListGroup.Item>
                                     </ListGroup>
                             )
                         })}
