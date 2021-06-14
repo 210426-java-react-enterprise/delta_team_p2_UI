@@ -113,9 +113,9 @@ export function LandingComponent(props: IUserprops){
                 <Row>
                     <Col xs = "10">
                         <br/>
-                        <Card>
+                        <Card className="text-center">
                             <Card.Header>Movies To Watch List</Card.Header>
-                                <Carousel >
+                                <Carousel>
                                     {
                                         watchListElement
                                         ?
@@ -139,22 +139,22 @@ export function LandingComponent(props: IUserprops){
 
                         </Card>
                         <br/>
-                        <Card>
+                        <Card className="text-center">
                         <Card.Header>Movie Watch History</Card.Header>
-                            <Carousel>
+                            <Carousel className="text-center">
                                 {
                                     movieElement
                                     ?
                                     movieElement.map(movie => (
-                                        <>
                                         <Carousel.Item>
-                                            {movie.title}
-                                        </Carousel.Item> 
-                                        <img src={movie.poster}/>
-                                        </>
+                                            <div>
+                                                <span className="d-block">{movie.title}</span> 
+                                                <img src={movie.poster}/>
+                                            </div>
+                                        </Carousel.Item>
                                     ))
                                     :
-                                    <Carousel.Item> Your Watch History Is empty</Carousel.Item>
+                                    <Carousel.Item> Your Watch History is empty</Carousel.Item>
                                 }
                                 {/* {rows.map((twoMovies: any) => (
                                     <Carousel.Item>
