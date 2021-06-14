@@ -21,32 +21,30 @@ function NavComponent(props: INavProps){
     function logOut(){
         //props.setUserLoggedIn(undefined);
     }
-
-    // setTimeout(()=>{
-    //     let 
-        
-    // })
    
     console.log(loggedUser);
     console.log("userchecker",userChecker)
     return(
     <>
         <Navbar bg="light">
-            <Navbar.Brand>Cineholics Anonymous</Navbar.Brand>
+            <Navbar.Brand><Nav.Link href="">Cineholics Anonymous</Nav.Link></Navbar.Brand>
             {
                 userChecker
                 
                 ?
                 <>
                     <Nav className="mr-auto">
-                        <Nav.Link>{String(loggedUser.username)}'s Profile</Nav.Link>
-                        <Nav.Link href="/searchmovies">Movie List</Nav.Link>
-                        <Nav.Link href="/favmovies">Favorites</Nav.Link>
+                        <Nav.Link href="/landing">{String(loggedUser.username)}'s Profile</Nav.Link>
+                        <Nav.Link href="/watchhistory">My Watch History</Nav.Link>
+                        <Nav.Link href="/watchlist">My Future Watch List</Nav.Link>
+                        {/* <Nav.Link href="/favmovies">Favorites</Nav.Link> */}
                         <Nav.Link href="/out">Log Out</Nav.Link>
                     </Nav>
                     <Form inline>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
-                        <Button type="submit">Submit</Button>  
+                        <Nav.Link href="/moviesearch">Movie Search</Nav.Link>
+                        {/* <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
+                        <Button type="submit">Submit</Button>   */}
+
                     </Form>
                     <DarkModeComponent darkMode={props.darkMode} setDarkMode={props.setDarkMode}/>
                     </>

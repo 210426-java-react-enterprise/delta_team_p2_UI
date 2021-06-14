@@ -3,7 +3,8 @@ import {ListGroup, Card, Container, Row, Col, Carousel, CardGroup} from "react-b
 import { follower } from "../models/follower";
 import { Movie } from "../models/movie";
 import { User } from "../models/user";
-import { getFollowing, getWatchHistory, getWatchList } from "../remote/landing-service";
+import { getFollowing, getWatchList, getWatchHistory } from "../remote/landing-service";
+//import { getWatchHistory } from "../remote/watchlist-service";
 
 //TODO: Setup interface to take a created User property
 interface IUserprops{
@@ -21,53 +22,80 @@ export function LandingComponent(props: IUserprops){
 
     const fakeMovieList = ["movie1", "movie2", "movie3", "movie 4", "movie 5", "movie6"]
  
-    let followers: follower[] = [];
+    const [movieElement, setMovieElement] = useState(undefined as unknown as Movie[] || undefined);
+    const [followerElement, setFollowerElement] = useState(undefined as unknown as follower[] || undefined);
+    const [watchListElement, setWatchList] = useState(undefined as unknown as Movie[] || undefined);
+
+    // let followers: follower[] = [];
 
   
 
-        useEffect(()=> {
-            console.log("Use Effect is Called")
-            const getData = async () => {
-                followers = await getFollowing(props.curretUser?.id ?? "1");
-                props.setFollowers(followers);
-                console.log("follwoers: " + props.followers)
-            };
-            getData();
-        }, [])
+        // useEffect(()=> {
+        //     console.log("Use Effect is Called")
+        //     const getData = async () => {
+        //         followers = await getFollowing();
+        //         //props.setFollowers(followers);
+        //         console.log("follwoers: " + props.followers)
+        //     };
+        //     getData();
+        // }, [])
 
-    let movieList: Movie[] = [];
+    // let movieList: Movie[] = [];
+    //     useEffect(()=> {
+    //         console.log("Use Effect 2 is Called")
+    //         const getData = async () => {
+    //             movieList = await getWatchList(props.currentUser?.id);
+    //             props.setWatchList(movieList)
+    //         };
+    //         getData();
+    //     }, [])
+
+
+
+
+
+        // let movieList: Movie[] = [];
+
         useEffect(()=> {
             console.log("Use Effect 2 is Called")
             const getData = async () => {
-                movieList = await getWatchList(props.curretUser?.id);
-                props.setWatchList(movieList)
+                let movieList = await getWatchList();
+                setWatchList(movieList)
             };
             getData();
         }, [])
 
-        movieList = []
+
         useEffect(()=> {
-            console.log("Use Effect 3 is Called")
             const getData = async () => {
-                movieList = await getWatchHistory(props.curretUser?.id);
-                props.setWatchHistory(movieList)
+                let response = await getWatchHistory();
+                setMovieElement(response);
+                //console.log(movieElement);
             };
             getData();
         }, [])
 
-<!--     useEffect(()=> {
-        console.log("Use Effect is Called")
-        const getData = async () => {
-            console.log('currentUser', props.currentUser );
-            followers = await getFollowing(props.currentUser?.id);
-            props.setFollowers(followers);
-            console.log('friends: ', followers)
-        };
-        getData();
-    }, []) -->
+        //let followers: follower[] = [];
+        useEffect(()=> {
+            console.log("Use Effect is Called")
+            const getData = async () => {
+                let followers = await getFollowing();
+                setFollowerElement(followers);
+               //console.log("follwoers: " + props.followers)
+            };
+            getData();
+        }, [])
 
-
-    
+        // movieList = []
+        // useEffect(()=> {
+        //     console.log("Use Effect 3 is Called")
+        //     const getData = async () => {
+        //         movieList = await getWatchHistory(props.currentUser?.id);
+        //         props.setWatchHistory(movieList)
+        //     };
+        //     getData();
+        // }, [])
+   
 
     const rows = fakeMovieList.reduce(function (rows: any, key, index) { 
         return (index % 2 == 0 ? rows.push([key]) 
@@ -79,30 +107,25 @@ export function LandingComponent(props: IUserprops){
           : rows[rows.length-1].push(key)) && rows;
       }
 
-
-
-    //const[followersListTest, setFollowersList] = useState('');
-    // let updateFollowerlist = (e:any) => {
-    //     console.log("LOADED")
-    // }
-    //TODO: Change these values to match the user's values
     return(
-
         <>
             <Container fluid>
                 <Row>
                     <Col xs = "10">
                         <br/>
-                        <Card>
+                        <Card className="text-center">
                             <Card.Header>Movies To Watch List</Card.Header>
-                                <Carousel >
+                                <Carousel>
                                     {
-                                        props.watchList
+                                        watchListElement
                                         ?
-                                            props.watchList.map(movie => (
-                                                <Carousel.Item>
-                                                    {movie.title}
-                                                </Carousel.Item>
+                                        watchListElement.map(movie => (
+                                            <>
+                                            <Carousel.Item>
+                                                {movie.title}
+                                            </Carousel.Item> 
+                                            <img src={movie.poster}/>
+                                            </>
                                             ))
                                         :
                                         <Carousel.Item> Your Watch List Is empty</Carousel.Item>
@@ -116,19 +139,22 @@ export function LandingComponent(props: IUserprops){
 
                         </Card>
                         <br/>
-                        <Card>
+                        <Card className="text-center">
                         <Card.Header>Movie Watch History</Card.Header>
-                            <Carousel>
+                            <Carousel className="text-center">
                                 {
-                                    props.watchHistory
+                                    movieElement
                                     ?
-                                    props.watchHistory.map(movie => (
+                                    movieElement.map(movie => (
                                         <Carousel.Item>
-                                            {movie.title}
+                                            <div>
+                                                <span className="d-block">{movie.title}</span> 
+                                                <img src={movie.poster}/>
+                                            </div>
                                         </Carousel.Item>
                                     ))
                                     :
-                                    <Carousel.Item> Your Watch History Is empty</Carousel.Item>
+                                    <Carousel.Item> Your Watch History is empty</Carousel.Item>
                                 }
                                 {/* {rows.map((twoMovies: any) => (
                                     <Carousel.Item>
@@ -151,9 +177,9 @@ export function LandingComponent(props: IUserprops){
                         <div className="justify-content-center">
                                 <ListGroup className="seacrh=results" variant="flush">
                                     {
-                                        props.followers 
+                                        followerElement
                                         ?
-                                        props.followers.map(followers => (
+                                        followerElement.map(followers => (
                                             <ListGroup.Item>
                                                 {followers.username}
                                             </ListGroup.Item>

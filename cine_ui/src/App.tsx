@@ -10,19 +10,18 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './themes/themes';
 import { GlobalStyles } from './themes/global';
 
-//hooks
-import useToggle from './hooks/UseToggle';
 
-import { AllMoviesComponent } from './components/WatchHistory';
+import { WatchHistoryComponent } from './components/WatchHistoryComponent';
 import { LogOutComponent } from './components/LogOutComponent';
 import { LandingComponent } from './components/LandingComponent';
 import NavComponent from './components/NavComponent';
 import { Movie } from './models/movie';
 import { User } from './models/user';
 import { follower } from './models/follower';
+import { MovieSearchComponent } from './components/MovieSearchComponent';
 
 
-const logo = require("./logo.svg") as string;
+//const logo = require("./logo.svg") as string;
 
 //const mockUser = false;
 
@@ -53,9 +52,10 @@ function App() {
           <Switch>
             <Route exact path="/" render={() => <AuthComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
             <Route exact path="/favmovies" render={() =><FavoriteMoviesComponent movies={favMovie}/>}/>
-            <Route exact path="/searchmovies" render={() =><AllMoviesComponent currentUser={mockUser} allmovies={favMovie} onAdd={addFavMovieToList}/>}/>
-            <Route path="/landing" render={() => <LandingComponent curretUser={mockUser} setCurrentUser={setUser} followers={followers}
+            <Route exact path="/watchhistory" render={() =><WatchHistoryComponent currentUser={mockUser} allmovies={favMovie} onAdd={addFavMovieToList}/>}/>
+            <Route exact path="/landing" render={() => <LandingComponent currentUser={mockUser} setCurrentUser={setUser} followers={followers}
              setFollowers ={setFollowers} watchList={watchList} setWatchList={setWatchList} watchHistory={watchHistory} setWatchHistory={setWatchHistory}/>}/>
+             <Route exact path="/moviesearch" render={() => <MovieSearchComponent/>} />
             <Route exact path="/out" render={() => <LogOutComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
           </Switch>
         </Router>

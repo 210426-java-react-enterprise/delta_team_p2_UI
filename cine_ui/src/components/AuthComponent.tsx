@@ -1,4 +1,3 @@
-import "./AuthComponent.css";
 import { Form, Button} from "react-bootstrap";
 import { useState } from "react";
 import { register } from "../remote/register-service"
