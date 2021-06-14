@@ -28,7 +28,7 @@ export function LandingComponent(props: IUserprops){
         useEffect(()=> {
             console.log("Use Effect is Called")
             const getData = async () => {
-                followers = await getFollowing(props.curretUser?.id ?? "1");
+                followers = await getFollowing(props.currentUser?.id ?? "1");
                 props.setFollowers(followers);
                 console.log("follwoers: " + props.followers)
             };
@@ -39,7 +39,7 @@ export function LandingComponent(props: IUserprops){
         useEffect(()=> {
             console.log("Use Effect 2 is Called")
             const getData = async () => {
-                movieList = await getWatchList(props.curretUser?.id);
+                movieList = await getWatchList(props.currentUser?.id);
                 props.setWatchList(movieList)
             };
             getData();
@@ -49,22 +49,22 @@ export function LandingComponent(props: IUserprops){
         useEffect(()=> {
             console.log("Use Effect 3 is Called")
             const getData = async () => {
-                movieList = await getWatchHistory(props.curretUser?.id);
+                movieList = await getWatchHistory(props.currentUser?.id);
                 props.setWatchHistory(movieList)
             };
             getData();
         }, [])
 
-<!--     useEffect(()=> {
-        console.log("Use Effect is Called")
-        const getData = async () => {
-            console.log('currentUser', props.currentUser );
-            followers = await getFollowing(props.currentUser?.id);
-            props.setFollowers(followers);
-            console.log('friends: ', followers)
-        };
-        getData();
-    }, []) -->
+//     useEffect(()=> {
+//         console.log("Use Effect is Called")
+//         const getData = async () => {
+//             console.log('currentUser', props.currentUser );
+//             followers = await getFollowing(props.currentUser?.id);
+//             props.setFollowers(followers);
+//             console.log('friends: ', followers)
+//         };
+//         getData();
+//     }, [])
 
 
     

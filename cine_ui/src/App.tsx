@@ -54,7 +54,7 @@ function App() {
             <Route exact path="/" render={() => <AuthComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
             <Route exact path="/favmovies" render={() =><FavoriteMoviesComponent movies={favMovie}/>}/>
             <Route exact path="/searchmovies" render={() =><AllMoviesComponent currentUser={mockUser} allmovies={favMovie} onAdd={addFavMovieToList}/>}/>
-            <Route path="/landing" render={() => <LandingComponent curretUser={mockUser} setCurrentUser={setUser} followers={followers}
+            <Route path="/landing" render={() => <LandingComponent currentUser={mockUser} setCurrentUser={setUser} followers={followers}
              setFollowers ={setFollowers} watchList={watchList} setWatchList={setWatchList} watchHistory={watchHistory} setWatchHistory={setWatchHistory}/>}/>
             <Route exact path="/out" render={() => <LogOutComponent currentUser={mockUser} setCurrentUser={setUser}/>} />
           </Switch>
