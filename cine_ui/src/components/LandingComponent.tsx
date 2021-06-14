@@ -101,9 +101,9 @@ export function LandingComponent(props: IUserprops){
                 <Row>
                     <Col xs = "10">
                         <br/>
-                        <Card>
+                        <Card className="text-center">
                             <Card.Header>Movies To Watch List</Card.Header>
-                                <Carousel >
+                                <Carousel>
                                     {
                                         props.watchList
                                         ?
@@ -124,7 +124,7 @@ export function LandingComponent(props: IUserprops){
 
                         </Card>
                         <br/>
-                        <Card>
+                        <Card className="text-center">
                         <Card.Header>Movie Watch History</Card.Header>
                             <Carousel className="text-center">
                                 {
