@@ -27,7 +27,9 @@ function NavComponent(props: INavProps){
     return(
     <>
         <Navbar bg="light">
-            <Navbar.Brand><Nav.Link href="">Cineholics Anonymous</Nav.Link></Navbar.Brand>
+            
+            <Navbar.Brand><Nav.Link href=""><img style={{"margin":"0px", "width":"35px"}} src="logo192.png" />
+                Cineholics Anonymous</Nav.Link></Navbar.Brand>
             {
                 userChecker
                 
@@ -35,8 +37,8 @@ function NavComponent(props: INavProps){
                 <>
                     <Nav className="mr-auto">
                         <Nav.Link href="/landing">{String(loggedUser.username)}'s Profile</Nav.Link>
-                        <Nav.Link href="/watchhistory">My Watch History</Nav.Link>
-                        <Nav.Link href="/watchlist">My Future Watch List</Nav.Link>
+                        {/* <Nav.Link href="/watchhistory">My Watch History</Nav.Link>
+                        <Nav.Link href="/watchlist">My Future Watch List</Nav.Link> */}
                         {/* <Nav.Link href="/favmovies">Favorites</Nav.Link> */}
                         <Nav.Link href="/out">Log Out</Nav.Link>
                     </Nav>

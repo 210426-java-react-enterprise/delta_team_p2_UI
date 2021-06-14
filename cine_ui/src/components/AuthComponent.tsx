@@ -65,7 +65,7 @@ export function AuthComponent(props: IAuthProps) {
 
     let loginUser = async (e: any) => {
         e.preventDefault();
-        console.log(authName, authPass);
+        console.log('VERSION 0.1 NEW IP', authName, authPass);
         //let authUser = await authenticate(authName, authPass);
         let response = await authenticate(authName, authPass);
         localStorage.setItem("authorization", response.headers.authorization);
