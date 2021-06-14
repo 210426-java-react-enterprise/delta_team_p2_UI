@@ -24,8 +24,9 @@ export function LandingComponent(props: IUserprops){
  
     const [movieElement, setMovieElement] = useState(undefined as unknown as Movie[] || undefined);
     const [followerElement, setFollowerElement] = useState(undefined as unknown as follower[] || undefined);
+    const [watchListElement, setWatchList] = useState(undefined as unknown as Movie[] || undefined);
 
-    let followers: follower[] = [];
+    // let followers: follower[] = [];
 
   
 
@@ -39,37 +40,48 @@ export function LandingComponent(props: IUserprops){
         //     getData();
         // }, [])
 
-    let movieList: Movie[] = [];
+    // let movieList: Movie[] = [];
+    //     useEffect(()=> {
+    //         console.log("Use Effect 2 is Called")
+    //         const getData = async () => {
+    //             movieList = await getWatchList(props.currentUser?.id);
+    //             props.setWatchList(movieList)
+    //         };
+    //         getData();
+    //     }, [])
+
+
+
+
+
+        // let movieList: Movie[] = [];
+
         useEffect(()=> {
             console.log("Use Effect 2 is Called")
             const getData = async () => {
-                movieList = await getWatchList(props.currentUser?.id);
-                props.setWatchList(movieList)
+                let movieList = await getWatchList();
+                setWatchList(movieList)
             };
             getData();
         }, [])
-
-
-
-
-
 
 
         useEffect(()=> {
             const getData = async () => {
                 let response = await getWatchHistory();
                 setMovieElement(response);
-                console.log(movieElement);
+                //console.log(movieElement);
             };
             getData();
         }, [])
 
+        //let followers: follower[] = [];
         useEffect(()=> {
             console.log("Use Effect is Called")
             const getData = async () => {
-                followers = await getFollowing();
+                let followers = await getFollowing();
                 setFollowerElement(followers);
-                console.log("follwoers: " + props.followers)
+               //console.log("follwoers: " + props.followers)
             };
             getData();
         }, [])
@@ -105,12 +117,15 @@ export function LandingComponent(props: IUserprops){
                             <Card.Header>Movies To Watch List</Card.Header>
                                 <Carousel>
                                     {
-                                        props.watchList
+                                        watchListElement
                                         ?
-                                            props.watchList.map(movie => (
-                                                <Carousel.Item>
-                                                    {movie.title}
-                                                </Carousel.Item>
+                                        watchListElement.map(movie => (
+                                            <>
+                                            <Carousel.Item>
+                                                {movie.title}
+                                            </Carousel.Item> 
+                                            <img src={movie.poster}/>
+                                            </>
                                             ))
                                         :
                                         <Carousel.Item> Your Watch List Is empty</Carousel.Item>
