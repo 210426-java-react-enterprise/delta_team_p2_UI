@@ -41,8 +41,10 @@ function NavComponent(props: INavProps){
                         <Nav.Link href="/out">Log Out</Nav.Link>
                     </Nav>
                     <Form inline>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
-                        <Button type="submit">Submit</Button>  
+                        <Nav.Link href="/moviesearch">Movie Search</Nav.Link>
+                        {/* <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
+                        <Button type="submit">Submit</Button>   */}
+
                     </Form>
                     <DarkModeComponent darkMode={props.darkMode} setDarkMode={props.setDarkMode}/>
                     </>

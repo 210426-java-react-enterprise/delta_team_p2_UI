@@ -5,8 +5,12 @@ import { webappClient, webappClientAuthorized } from "./webapp-client";
 //     console.log("Data:" + response.data)
 //     return await response.data;
 // }
+
+
+
+///////////////CHECK THE SLASH IN THE GET PARAMETER LIST URL THINGY
 export async function getFollowing(){
-    let response = await webappClientAuthorized.get(`followerdetail`)
+    let response = await webappClientAuthorized.get(`/followerdetail`)
     console.log("Data:" + response.data)
     return await response.data;
 }
@@ -16,8 +20,8 @@ export async function getWatchHistory() {
     return await response.data;
 }
 
-export async function getWatchList(userId: String | undefined){
-    let response = await webappClient.get(`userwatchlist/${userId}`)
+export async function getWatchList(){
+    let response = await webappClientAuthorized.get(`/wishlist`)
     console.log("Data:" + response.data)
     return await response.data;
 }
