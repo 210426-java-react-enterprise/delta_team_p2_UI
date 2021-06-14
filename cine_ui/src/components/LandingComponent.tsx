@@ -1,6 +1,4 @@
-
-import React, { useState } from "react"
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react"
 import {ListGroup, Card, Container, Row, Col, Carousel, CardGroup} from "react-bootstrap"
 import { follower } from "../models/follower";
 import { Movie } from "../models/movie";
@@ -9,7 +7,7 @@ import { getFollowing, getWatchHistory, getWatchList } from "../remote/landing-s
 
 //TODO: Setup interface to take a created User property
 interface IUserprops{
-    curretUser: User | undefined,
+    currentUser: User | undefined,
     setCurrentUser: (setUserLogIn: User | undefined) => void,
     followers: follower[] | undefined,
     setFollowers: (setFollowersList: follower[]) => void
@@ -26,6 +24,7 @@ export function LandingComponent(props: IUserprops){
     let followers: follower[] = [];
 
   
+
         useEffect(()=> {
             console.log("Use Effect is Called")
             const getData = async () => {
@@ -56,6 +55,18 @@ export function LandingComponent(props: IUserprops){
             getData();
         }, [])
 
+<!--     useEffect(()=> {
+        console.log("Use Effect is Called")
+        const getData = async () => {
+            console.log('currentUser', props.currentUser );
+            followers = await getFollowing(props.currentUser?.id);
+            props.setFollowers(followers);
+            console.log('friends: ', followers)
+        };
+        getData();
+    }, []) -->
+
+
     
 
     const rows = fakeMovieList.reduce(function (rows: any, key, index) { 
@@ -70,10 +81,10 @@ export function LandingComponent(props: IUserprops){
 
 
 
-    const[followersListTest, setFollowersList] = useState('');
-    let updateFollowerlist = (e:any) => {
-        console.log("LOADED")
-    }
+    //const[followersListTest, setFollowersList] = useState('');
+    // let updateFollowerlist = (e:any) => {
+    //     console.log("LOADED")
+    // }
     //TODO: Change these values to match the user's values
     return(
 
@@ -151,7 +162,6 @@ export function LandingComponent(props: IUserprops){
                                         <ListGroup.Item> No Follower Found</ListGroup.Item>
                                     }
                                    
-                                    <ListGroup.Item>----------</ListGroup.Item>
                                 </ListGroup>
                         </div>
                         

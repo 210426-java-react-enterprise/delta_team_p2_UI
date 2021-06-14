@@ -67,13 +67,13 @@ export function AuthComponent(props: IAuthProps) {
     let loginUser = async (e: any) => {
         e.preventDefault();
         console.log(authName, authPass);
-        let authUser = await authenticate(authName, authPass);
-      
-        //add logged in user to local storage
-        localStorage.setItem("loggedInUser",JSON.stringify(authUser));
-        localStorage.setItem("un",authUser.username)
-        props.setCurrentUser(authUser)
-        console.log(`Welcome, ${username}`)
+        //let authUser = await authenticate(authName, authPass);
+        let response = await authenticate(authName, authPass);
+        localStorage.setItem("authorization", response.headers.authorization);
+        localStorage.setItem("loggedInUser", JSON.stringify(response.data));
+        localStorage.setItem("un",response.data.username)
+        props.setCurrentUser(response.data)
+        console.log(`Welcome, ${response.data.username}`)
        
     }
     
