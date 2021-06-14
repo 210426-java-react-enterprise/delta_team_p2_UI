@@ -27,17 +27,17 @@ function NavComponent(props: INavProps){
     return(
     <>
         <Navbar bg="light">
-            <Navbar.Brand>Cineholics Anonymous</Navbar.Brand>
+            <Navbar.Brand><Nav.Link href="">Cineholics Anonymous</Nav.Link></Navbar.Brand>
             {
                 userChecker
                 
                 ?
                 <>
                     <Nav className="mr-auto">
-                        <Nav.Link>{String(loggedUser.username)}'s Profile</Nav.Link>
+                        <Nav.Link href="/landing">{String(loggedUser.username)}'s Profile</Nav.Link>
                         <Nav.Link href="/watchhistory">My Watch History</Nav.Link>
                         <Nav.Link href="/watchlist">My Future Watch List</Nav.Link>
-                        <Nav.Link href="/favmovies">Favorites</Nav.Link>
+                        {/* <Nav.Link href="/favmovies">Favorites</Nav.Link> */}
                         <Nav.Link href="/out">Log Out</Nav.Link>
                     </Nav>
                     <Form inline>
