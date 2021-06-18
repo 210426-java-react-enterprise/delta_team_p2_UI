@@ -1,5 +1,7 @@
 # delta_team_p2_UI
-The frontend UI component of Project 2
+The front-end UI component of Project 2.
+
+[Please find the back-end here](https://github.com/210426-java-react-enterprise/delta_team_p2_WebApp)
 
 With Project 1 out of the way, it's time to work as a group to build your first full-stack application! No holding back on this one, every bit of abstraction we've covered is at your disposal!
 
